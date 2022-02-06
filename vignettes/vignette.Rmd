@@ -20,7 +20,7 @@ if (!"MuSiC" %in% rownames(installed.packages())) {
 
 # load
 library(MuSiC)
-
+library(Biobase)
 library(bseqsc)
 ```
 

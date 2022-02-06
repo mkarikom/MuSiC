@@ -8,15 +8,17 @@ Description: Companion package to: A bulk tissue deconvolution method with multi
 License: GPL (>= 3)
 Encoding: UTF-8
 LazyData: true
+biocViews:
 Depends: R (>= 3.3.2), nnls (>= 1.4), ggplot2 (>= 2.2.1)
 Imports: 
         plyr,
         Biobase, 
         MCMCpack
+Suggests: bseqsc
 URL: https://github.com/xuranw/MuSiC
 BugReports: https://github.com/xuranw/MuSiC/issues
 VignetteBuilder: knitr
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.2
 Remotes: 
         renozao/xbioc,
         shenorrlab/bseqsc
