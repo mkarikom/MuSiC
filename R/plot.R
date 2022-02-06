@@ -551,7 +551,7 @@ Prop_heat_Est = function(prop.est, method.name = NULL, title = NULL, ... ){
 #'
 #'
 CellTotal.df = function(eset, cellType, sampleID){
-  df <- pData(eset)
+  df <- Biobase::pData(eset)
   df$Total = colSums(Biobase::exprs(eset))
   mdf <- ddply(df, cellType, function(x){
     msample <- unlist(dlply(x, sampleID, function(x) mean(x$Total)))
@@ -620,11 +620,11 @@ Relative_gene_boxplot = function(sc.eset, gene.name, nu = 10^{-10}, marker.id = 
   
   if(is.null(select.ct)){
     sc.ra = relative.ab(Biobase::exprs(x))[gene.name, ]
-    m.sc.ra = pData(sc.eset)
+    m.sc.ra = Biobase::pData(sc.eset)
     m.sc.ra$Relative.Ab = sc.ra
   }else{
     sc.ra = relative.ab(Biobase::exprs(x))[gene.name, sc.eset$cellType %in% select.ct]
-    m.sc.ra = pData(sc.eset)[sc.eset$cellType%in% select.ct, ]
+    m.sc.ra = Biobase::pData(sc.eset)[sc.eset$cellType%in% select.ct, ]
     m.sc.ra$Relative.Ab = sc.ra
     m.sc.ra$cellType  = factor(m.sc.ra$cellType, levels = select.ct)
   }

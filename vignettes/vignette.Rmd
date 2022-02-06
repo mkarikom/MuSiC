@@ -200,8 +200,8 @@ Constrain our analysis on beta cells
 
 ```{r}
 # Create dataframe for beta cell proportions and HbA1c levels
-m.prop.ana = data.frame(Age = rep(pData(GSE50244.bulk.eset)$age, 4), BMI = rep(pData(GSE50244.bulk.eset)$bmi, 4), HbA1c = rep(pData(GSE50244.bulk.eset)$hba1c, 4),
-                        Gender = rep(pData(GSE50244.bulk.eset)$gender, 4),
+m.prop.ana = data.frame(Age = rep(Biobase::pData(GSE50244.bulk.eset)$age, 4), BMI = rep(Biobase::pData(GSE50244.bulk.eset)$bmi, 4), HbA1c = rep(Biobase::pData(GSE50244.bulk.eset)$hba1c, 4),
+                        Gender = rep(Biobase::pData(GSE50244.bulk.eset)$gender, 4),
                         ct.prop = c(data.matrix(GSE50244.EMTAB.prop$Est.prop.weighted[, 2]), GSE50244.EMTAB.prop$Est.prop.allgene[, 2], Est.prop.bseq[, 2], Est.prop.cibersort[, 2]), 
                         Method = factor(rep( c('MuSiC', 'NNLS', 'BSEQ-sc', 'CIBERSORT'), each = 89), levels =  c('MuSiC', 'NNLS', 'BSEQ-sc', 'CIBERSORT')) )
 m.prop.ana.h = subset(m.prop.ana, !is.na(HbA1c))
@@ -318,7 +318,7 @@ cl.type = as.character(Mousesub.eset$cellType)
 for(cl in 1:length(clusters.type)){
   cl.type[cl.type %in% clusters.type[[cl]]] = names(clusters.type)[cl]
 }
-pData(Mousesub.eset)$clusterType = factor(cl.type, levels = c(names(clusters.type), 'CD-Trans', 'Novel1', 'Novel2'))
+Biobase::pData(Mousesub.eset)$clusterType = factor(cl.type, levels = c(names(clusters.type), 'CD-Trans', 'Novel1', 'Novel2'))
 
 # 13 selected cell types
 s.mouse = unlist(clusters.type)
